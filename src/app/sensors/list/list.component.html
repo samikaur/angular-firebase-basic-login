@@ -1,0 +1,15 @@
+<div class="normal-content">
+  <h1>Sensors</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of sensors | async">
+        <td>{{item.name}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
