@@ -1,3 +1,5 @@
+import { SensorEffects } from './effects/sensor.effect';
+import { SensorsService } from './services/sensors.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -9,7 +11,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers, metaReducers } from './reducers/';
+import { environment } from '../../environments/environment';
 
 @NgModule({
   imports: [
@@ -17,6 +23,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([
+      SensorEffects
+    ]),
     FlexLayoutModule,
     MatListModule,
     MatSidenavModule,
@@ -25,7 +36,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatInputModule
   ],
-  declarations: [],
+  providers: [
+    SensorsService
+  ],
   exports: [
     FormsModule,
     ReactiveFormsModule,

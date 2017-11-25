@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { User } from './../models/user.model';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 
 @Component({
@@ -8,7 +9,12 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class UsersListViewComponent {
   displayedColumns = ['name', 'email'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource([]);
+
+  @Input()
+  set users(users: User[]) {
+    this.dataSource.data = users;
+  }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -16,14 +22,3 @@ export class UsersListViewComponent {
     this.dataSource.filter = filterValue;
   }
 }
-
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-}
-
-const ELEMENT_DATA: User[] = [
-  { id: '1', name: 'Simon Sample', email: 'simon.sample@notreal.com' },
-  { id: '2', name: 'Admin', email: '' },
-];
