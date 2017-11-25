@@ -6,6 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -32,6 +33,7 @@ import { environment } from '../../environments/environment';
     MatListModule,
     MatSidenavModule,
     MatTableModule,
+    MatSortModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule
@@ -44,6 +46,7 @@ import { environment } from '../../environments/environment';
     ReactiveFormsModule,
     FlexLayoutModule,
     MatListModule,
+    MatSortModule,
     MatSidenavModule,
     MatTableModule,
     MatButtonModule,
