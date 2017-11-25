@@ -1,25 +1,23 @@
-import { NgModule }       from '@angular/core';
-import { CommonModule }   from '@angular/common';
-import { AdminRoutingModule }       from './admin-routing.module';
-import {AdminComponent} from "./admin.component";
-import {AdminGuard} from "../shared/admin.guard";
-import {ListUsersComponent} from "./users/list/list.component";
-import {EditUserComponent} from "./users/edit/edit.component";
-import {FormsModule} from "@angular/forms";
-import {AdminHomeComponent} from "./admin-home.component";
+import { UserViewComponent } from './components/user-view.component';
+import { UsersListViewComponent } from './components/users-list-view.component';
+import { SharedModule } from './../shared/shared.module';
+import { UserComponent } from './containers/user.component';
+import { UsersComponent } from './containers/users.component';
+import { AdminRoutingModule } from './admin-routing.module';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [
-    AdminComponent,
-    AdminHomeComponent,
-    ListUsersComponent,
-    EditUserComponent
-  ],
   imports: [
     CommonModule,
-    FormsModule,
+    SharedModule,
     AdminRoutingModule
   ],
-  providers: [AdminGuard]
+  declarations: [
+    UsersListViewComponent,
+    UserViewComponent,
+    UsersComponent,
+    UserComponent
+  ]
 })
-export class AdminModule {}
+export class AdminModule { }
