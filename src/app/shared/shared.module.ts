@@ -1,3 +1,5 @@
+import { AdminGuard } from './guards/admin.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { SensorEffects } from './effects/sensor.effect';
 import { SensorsService } from './services/sensors.service';
 import { NgModule } from '@angular/core';
@@ -15,6 +17,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { Ng2Webstorage } from 'ngx-webstorage';
 import { reducers, metaReducers } from './reducers/';
 import { environment } from '../../environments/environment';
 
@@ -29,6 +35,10 @@ import { environment } from '../../environments/environment';
     EffectsModule.forRoot([
       SensorEffects
     ]),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    Ng2Webstorage,
     FlexLayoutModule,
     MatListModule,
     MatSidenavModule,
@@ -44,6 +54,9 @@ import { environment } from '../../environments/environment';
   exports: [
     FormsModule,
     ReactiveFormsModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    Ng2Webstorage,
     FlexLayoutModule,
     MatListModule,
     MatSortModule,

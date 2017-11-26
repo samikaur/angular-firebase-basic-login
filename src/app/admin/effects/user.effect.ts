@@ -9,6 +9,9 @@ import { UserService } from './../services/user.service';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/catch';
+
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class UserEffects {
@@ -17,7 +20,8 @@ export class UserEffects {
     .ofType(userAction.LOAD)
     .switchMap(() => {
       return this.userService.getUsers()
-        .map((users: User[]) => new userAction.LoadComplete(users));
+        .map((users: User[]) => new userAction.LoadComplete(users))
+        .catch(err => of(new userAction.LoadComplete([])));
     });
 
   constructor(
